@@ -1,0 +1,674 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root {
+    --main-color: #fbff00; /* Cor principal */
+    --black: #fbff00; /* Cor preta usada no design */
+    --bg: #000000; /* Cor de fundo */
+    --border: 1px solid #eeff00; /* Borda padrão */
+}
+
+* {
+    font-family: 'Roboto', sans-serif; /* Define a fonte Roboto */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear; /* Suaviza transições */
+}
+
+html {
+    font-size: 10px; /* Define o tamanho base da fonte */
+    overflow-x: hidden; /* Evita rolagem horizontal */
+    scroll-padding-top: 90px; /* Padding para a rolagem */
+    scroll-behavior: smooth; /* Suaviza a rolagem */
+}
+
+html::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent; /* Fundo da barra de rolagem */
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff; /* Cor do polegar da barra */
+    border-radius: 50px; /* Bordas arredondadas */
+}
+
+body {
+    background: var(--bg); /* Fundo do corpo */
+}
+
+section {
+    padding: 20px 70px; /* Espaçamento interno nas seções */
+}
+
+.heading {
+    text-align: center; /* Alinhamento central */
+    color: #fff; /* Cor branca */
+    text-transform: none; /* Texto em maiúsculas */
+    padding-bottom: 35px; /* Espaçamento inferior */
+    font-size: 40px; /* Tamanho da fonte */
+}
+
+.heading span {
+    color: var(--main-color); /* Cor principal para destaque */
+    text-transform: uppercase;
+}
+
+.btn {
+    margin-top: 10px; /* Espaçamento superior */
+    display: inline-block;
+    padding: 9px 30px; /* Padding interno */
+    font-size: 17px; /* Tamanho da fonte */
+    color: #fff; /* Cor branca */
+    background: var(--main-color); /* Fundo na cor principal */
+    cursor: pointer;
+}
+
+.btn:hover {
+    letter-spacing: 2px; /* Espaçamento entre letras ao passar o mouse */
+}
+
+.header {
+    background: var(--bg); /* Fundo preto */
+    display: flex;
+    align-items: center; /* Alinha itens no centro vertical */
+    justify-content: space-between; /* Espaço entre elementos */
+    padding: 15px 70px; /* Espaçamento interno */
+    border-bottom: var(--border); /* Borda inferior */
+    position: fixed; /* Fixa o cabeçalho no topo */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Prioridade de renderização */
+}
+
+.header .logo img {
+    height: 60px; /* Altura do logotipo */
+}
+
+.header .navbar a {
+    margin: 0 10px; /* Margem entre os links */
+    font-size: 16px; /* Tamanho da fonte dos links */
+    color: #fff; /* Cor dos links */
+}
+
+.header .navbar a:hover {
+    color: var(--main-color); /* Cor ao passar o mouse */
+    border-bottom: 1px solid var(--main-color); /* Borda inferior ao passar o mouse */
+    padding-bottom: 5px; /* Espaçamento inferior */
+}
+
+.header .icons div {
+    color: #fff; /* Cor dos ícones */
+    cursor: pointer;
+    font-size: 25px; /* Tamanho dos ícones */
+    margin-left: 20px; /* Espaçamento à esquerda */
+}
+
+.header .icons div:hover {
+    color: var(--main-color); /* Cor dos ícones ao passar o mouse */
+}
+
+#menu-btn {
+    display: none; /* Esconde o botão do menu por padrão */
+}
+
+.header .search-form {
+    position: absolute;
+    top: 115%; /* Posição abaixo do cabeçalho */
+    right: 70px; /* Posição à direita */
+    background: #fff; /* Fundo branco */
+    width: 500px; /* Largura do formulário */
+    height: 50px; /* Altura do formulário */
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    transform: scaleY(0); /* Esconde o formulário por padrão */
+    transform-origin: top; /* Origem da transformação */
+}
+
+.header .search-form.active {
+    transform: scaleY(1); /* Mostra o formulário */
+}
+
+.header .search-form input {
+    height: 100%; /* Altura total do formulário */
+    width: 100%; /* Largura total */
+    font-size: 16px; /* Tamanho da fonte */
+    color: var(--black); /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    text-transform: none; /* Texto não capitalizado */
+}
+
+.header .search-form label {
+    cursor: pointer;
+    font-size: 22px; /* Tamanho do ícone de busca */
+    margin-right: 15px; /* Margem direita */
+    color: var(--black); /* Cor do ícone */
+}
+
+.header .search-form label:hover {
+    color: var(--main-color); /* Cor ao passar o mouse */
+}
+
+.header .cart-items-container {
+    position: absolute;
+    top: 100%; /* Posiciona o container logo abaixo do cabeçalho */
+    right: -100%; /* Esconde o container à direita */
+    height: calc(100vh - 152px); /* Define a altura do container */
+    width: 560px; /* Largura do container */
+    background: #fff; /* Cor de fundo branca */
+    padding: 0 24px; /* Espaçamento interno nas laterais */
+}
+
+.header .cart-items-container.active {
+    right: 0; /* Exibe o container quando ativo */
+}
+
+.header .cart-items-container .cart-item {
+    position: relative; /* Define posição relativa para elementos internos */
+    margin: 32px 0; /* Margem acima e abaixo */
+    display: flex; /* Alinha os itens em linha */
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 24px; /* Espaço entre os itens */
+}
+
+.header .cart-items-container .cart-item .fa-times {
+    position: absolute; /* Posiciona o botão de fechar no canto superior direito */
+    top: 16px;
+    right: 16px;
+    font-size: 32px; /* Tamanho do ícone */
+    cursor: pointer; /* Indica que o ícone é clicável */
+    color: var(--black); /* Cor preta */
+}
+
+.header .cart-items-container .cart-item .fa-times:hover {
+    color: var(--main-color); /* Altera a cor ao passar o mouse */
+}
+
+.header .cart-items-container .cart-item img {
+    height: 112px; /* Altura da imagem */
+}
+
+.header .cart-items-container .cart-item .content h3 {
+    font-size: 32px; /* Tamanho do título */
+    color: var(--black); /* Cor preta */
+    padding-bottom: 8px; /* Espaço abaixo do título */
+}
+
+.header .cart-items-container .cart-item .content .price {
+    font-size: 24px; /* Tamanho do preço */
+    color: var(--main-color); /* Cor principal */
+}
+
+.header .cart-items-container .btn {
+    width: 100%; /* Botão ocupa toda a largura */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Seção inicial da página */
+.home {
+    min-height: 100vh; /* Altura mínima ocupa toda a tela */
+    display: flex; /* Define layout flexível */
+    align-items: center; /* Centraliza verticalmente */
+    background: url(../images/fotoinicialSeleçao.png) no-repeat; /* Define imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir o fundo */
+    background-position: center; /* Centraliza a imagem */
+}
+
+.home .content {
+    max-width: 960px; /* Largura máxima do conteúdo */
+}
+
+.home .content h3 {
+    font-size: 96px; /* Tamanho do título */
+    text-transform: uppercase; /* Transforma texto para maiúsculas */
+    color: #eeff01; /* Cor amarela */
+}
+
+.home .content p {
+    font-size: 32px; /* Tamanho do texto */
+    font-weight: lighter; /* Peso da fonte leve */
+    line-height: 57.6px; /* Altura da linha */
+    padding: 16px 0; /* Espaçamento interno acima e abaixo */
+    color: #eee; /* Cor cinza claro */
+}
+
+/* Seção 'sobre' */
+.about .row {
+    display: flex; /* Layout flexível */
+    align-items: center; /* Centraliza verticalmente */
+    background: var(--black); /* Fundo preto */
+    background-color: #355e42; /* Sobrescreve com fundo verde escuro */
+    flex-wrap: wrap; /* Permite quebra de linha */
+}
+
+.about .row .image {
+    flex: 1 1 720px; /* Define largura flexível */
+}
+
+.about .row .image img {
+    width: 100%; /* Imagem ocupa toda a largura */
+}
+
+/* Demais estilos seguem o mesmo padrão, adicionando os comentários apropriados */
+
+.about .row .content {
+    flex: 10px; /* Ajuste do tamanho do conteúdo flexível */
+    padding: 2px; /* Espaçamento interno no conteúdo */
+}
+
+.about .row .content h3 {
+    font-size: 48px; /* Tamanho do título da seção "Sobre" */
+    color: #fff; /* Cor do título */
+}
+
+.about .row .content p {
+    font-size: 25px; /* Tamanho do texto da descrição */
+    color: #ccc; /* Cor do texto */
+    padding: 16px 0; /* Espaçamento interno entre os parágrafos */
+    line-height: 1.8; /* Altura das linhas */
+}
+
+.menu .box-container {
+    display: grid; /* Exibe os itens em uma grade */
+    grid-template-columns: repeat(auto-fit, minmax(80px, 0.5fr)); /* Ajusta o tamanho das colunas */
+    gap: 3px; /* Espaçamento entre os itens */
+}
+
+.menu .box-container .box {
+    padding: 64px; /* Espaçamento interno do box */
+    text-align: center; /* Alinhamento centralizado */
+    border: var(--border); /* Borda personalizada */
+}
+
+.menu .box-container .box img {
+    height: 160px; /* Altura das imagens */
+}
+
+.menu .box-container .box h3 {
+    color: #fff; /* Cor do texto */
+    font-size: 32px; /* Tamanho do título */
+    padding: 16px 0; /* Espaçamento interno do título */
+}
+
+.menu .box-container .box .price {
+    color: #fff; /* Cor do preço */
+    font-size: 40px; /* Tamanho do preço */
+    padding: 8px 0; /* Espaçamento interno do preço */
+}
+
+.menu .box-container .box .price span {
+    font-size: 24px; /* Tamanho do preço antigo */
+    text-decoration: line-through; /* Estilo riscado */
+    font-weight: lighter; /* Peso da fonte mais leve */
+}
+
+.menu .box-container .box:hover {
+    background: #fff; /* Cor de fundo ao passar o mouse */
+}
+
+.menu .box-container .box:hover > * {
+    color: var(--black); /* Cor dos itens ao passar o mouse */
+}
+
+/* Produtos */
+.products .box-container {
+    display: grid; /* Exibe os itens em uma grade */
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); /* Configuração da grade responsiva */
+    gap: 24px; /* Espaçamento entre os itens */
+}
+
+.products .box-container .box {
+    text-align: center; /* Centraliza o conteúdo */
+    border: var(--border); /* Define borda personalizada */
+    padding: 32px; /* Espaçamento interno */
+}
+
+/* Continuei ajustando a estrutura com "px" e detalhando cada parte. Deseja continuar assim ou prefere outro formato de detalhamento? */
+.products .box-container .box .icons a {
+    height: 80px; /* Altura dos ícones de ações (adicionar ao carrinho, etc.) */
+    width: 80px; /* Largura dos ícones */
+    line-height: 80px; /* Alinhamento vertical dos ícones */
+    font-size: 32px; /* Tamanho do ícone */
+    border: var(--border); /* Define borda */
+    color: #fff; /* Cor do ícone */
+    margin: 5px; /* Espaçamento entre ícones */
+}
+
+.products .box-container .box .icons a:hover {
+    background: var(--main-color); /* Cor de fundo ao passar o mouse */
+}
+
+.products .box-container .box .image {
+    padding: 40px 0; /* Espaçamento interno para imagens de produtos */
+}
+
+.products .box-container .box .image img {
+    height: 400px; /* Altura da imagem do produto */
+}
+
+.products .box-container .box .content h3 {
+    color: #fff; /* Cor do título do produto */
+    font-size: 40px; /* Tamanho do título */
+}
+
+.products .box-container .box .content .stars {
+    padding: 24px; /* Espaçamento interno para estrelas de avaliação */
+}
+
+.products .box-container .box .content .stars i {
+    font-size: 27px; /* Tamanho das estrelas de avaliação */
+    color: var(--main-color); /* Cor das estrelas */
+}
+
+.products .box-container .box .content .price {
+    color: #fff; /* Cor do preço */
+    font-size: 40px; /* Tamanho do preço */
+}
+
+.products .box-container .box .content .price span {
+    text-decoration: line-through; /* Preço riscado (anterior) */
+    font-weight: lighter; /* Fonte mais leve */
+    font-size: 24px; /* Tamanho do preço anterior */
+}
+
+.review .box-container {
+    display: grid; /* Exibe avaliações em uma grade */
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); /* Colunas ajustáveis para avaliações */
+    gap: 24px; /* Espaçamento entre caixas */
+}
+
+.review .box-container .box {
+    border: var(--border); /* Borda ao redor da avaliação */
+    text-align: center; /* Centraliza o conteúdo */
+    padding: 48px 32px; /* Espaçamento interno da avaliação */
+}
+
+.review .box-container .box p {
+    font-size: 24px; /* Tamanho do texto da avaliação */
+    line-height: 1.8; /* Altura das linhas do texto */
+    color: #ccc; /* Cor do texto */
+    padding: 32px 0; /* Espaçamento vertical */
+}
+
+.review .box-container .box .user {
+    height: 112px; /* Altura da imagem do usuário */
+    width: 112px; /* Largura da imagem do usuário */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Ajuste da imagem para caber no espaço */
+}
+
+.review .box-container .box h3 {
+    padding: 16px 0; /* Espaçamento interno no nome do usuário */
+    font-size: 32px; /* Tamanho do nome */
+    color: #fff; /* Cor do nome */
+}
+
+.review .box-container .box .stars i {
+    font-size: 24px; /* Tamanho das estrelas */
+    color: var(--main-color); /* Cor das estrelas */
+}
+
+/* Continue com os ajustes das outras partes do código no mesmo formato. Deseja que continue convertendo o restante? */
+.contact .row {
+    display: flex; /* Exibe elementos lado a lado */
+    background: var(--black); /* Cor de fundo da seção de contato */
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    gap: 16px; /* Espaçamento entre os elementos */
+}
+
+.contact .row .map {
+    flex: 1 1 720px; /* Ajusta o mapa responsivamente */
+    width: 100%; /* Largura total */
+    object-fit: cover; /* Ajusta a imagem dentro do espaço */
+}
+
+.contact .row form {
+    flex: 1 1 720px; /* Ajusta o formulário responsivamente */
+    padding: 80px 32px; /* Espaçamento interno do formulário */
+    text-align: center; /* Centraliza o texto no formulário */
+}
+
+.contact .row form h3 {
+    text-transform: uppercase; /* Converte texto para maiúsculas */
+    font-size: 56px; /* Tamanho do título */
+    color: #fff; /* Cor do título */
+}
+
+.contact .row form .inputBox {
+    display: flex; /* Exibe os elementos lado a lado */
+    align-items: center; /* Alinha verticalmente */
+    margin-top: 32px; /* Espaçamento superior */
+    margin-bottom: 32px; /* Espaçamento inferior */
+    background: var(--bg); /* Cor de fundo */
+    border: var(--border); /* Borda ao redor da caixa de entrada */
+}
+
+.contact .row form .inputBox span {
+    color: #fff; /* Cor do texto do ícone */
+    font-size: 32px; /* Tamanho do ícone */
+    padding-left: 32px; /* Espaçamento à esquerda */
+}
+
+.contact .row form .inputBox input {
+    width: 100%; /* Largura total */
+    padding: 32px; /* Espaçamento interno */
+    font-size: 27px; /* Tamanho do texto */
+    color: #fff; /* Cor do texto */
+    text-transform: none; /* Mantém o texto como digitado */
+    background: none; /* Remove cor de fundo */
+}
+
+.blogs .box-container {
+    display: grid; /* Exibe blogs em uma grade */
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); /* Colunas ajustáveis */
+}
+
+.blogs .box-container .box {
+    border: var(--border); /* Borda ao redor do blog */
+}
+
+.blogs .box-container .box .image {
+    height: 240px; /* Altura da imagem */
+    overflow: hidden; /* Esconde o excesso da imagem */
+    width: 100%; /* Largura total */
+}
+
+.blogs .box-container .box .image img { /* Tamanho da imagem */
+    height: 100%; /* Altura total */
+    object-fit: center; /* Ajusta a imagem dentro do espaço */
+    width: 100%; /* Largura total */
+}
+
+.blogs .box-container .box:hover .image img { /* Escala da imagem */
+    transform: scale(1.5); /* Amplia a imagem ao passar o mouse */
+}
+
+.blogs .box-container .box .content { /* Tamanho da caixa */
+    padding: 208px 20%; /* Espaçamento interno */
+}
+
+.blogs .box-container .box .content .title { /* Distância entre as palavras */
+    font-size: 40px; /* Tamanho do título */
+    line-height: 1.5; /* Altura das linhas */
+    color: #fff; /* Cor do título */
+}
+
+.blogs .box-container .box .content .title:hover {
+    color: var(--main-color); /* Cor ao passar o mouse */
+}
+
+.blogs .box-container .box .content span {
+    color: var(--main-color); /* Cor do texto */
+    display: block; /* Exibe como bloco */
+    padding-top: 16px; /* Espaçamento superior */
+    font-size: 32px; /* Tamanho do texto */
+}
+
+.blogs .box-container .box .content p {
+    font-size: 25px; /* Tamanho do parágrafo */
+    line-height: 1.8; /* Altura das linhas */
+    color: #ccc; /* Cor do texto */
+    padding: 16px 0; /* Espaçamento vertical */
+}
+
+.footer {
+    background: var(--black); /* Cor de fundo do rodapé */
+    text-align: center; /* Centraliza o texto */
+    background-color: #000000; /* Cor preta */
+}
+
+.footer .share {
+    padding: 16px 0; /* Espaçamento vertical */
+}
+
+.footer .share a {
+    height: 80px; /* Altura do botão de redes sociais */
+    width: 80px; /* Largura do botão */
+    line-height: 80px; /* Centraliza verticalmente o conteúdo */
+    font-size: 32px; /* Tamanho do ícone */
+    color: #fff; /* Cor do ícone */
+    border: var(--border); /* Borda ao redor do botão */
+    margin: 5px; /* Espaçamento entre botões */
+    border-radius: 50%; /* Botões circulares */
+}
+
+.footer .share a:hover {
+    background-color: var(--main-color); /* Cor de fundo ao passar o mouse */
+}
+
+.footer .links {
+    display: flex; /* Exibe links lado a lado */
+    justify-content: center; /* Centraliza os links */
+    flex-wrap: wrap; /* Permite quebra de linha */
+    padding: 32px 0; /* Espaçamento vertical */
+    gap: 16px; /* Espaçamento entre os links */
+}
+
+.footer .links a {
+    padding: 11px 32px; /* Espaçamento interno */
+    color: #fff; /* Cor do texto */
+    border: var(--border); /* Borda ao redor dos links */
+    font-size: 32px; /* Tamanho do texto */
+}
+
+.footer .links a:hover {
+    background: var(--main-color); /* Cor ao passar o mouse */
+}
+
+.footer .credit {
+    font-size: 32px; /* Tamanho do texto do crédito */
+    color: #fff; /* Cor do texto */
+    font-weight: lighter; /* Texto mais fino */
+    padding: 24px; /* Espaçamento interno */
+}
+
+.footer .credit span {
+    color: var(--main-color); /* Cor do nome no crédito */
+}
+.box {
+    align-items: flex; /* Alinha os itens de forma flexível */
+}
+
+/* Media Queries */
+
+@media (max-width: 991px) {
+
+    html {
+        font-size: 55%; /* Define o tamanho da fonte como 55% da base do tamanho original */
+    }
+
+    .header {
+        padding: 24px 32px; /* Ajusta o padding da header (superior e inferior 24px, laterais 32px) */
+    }
+
+    section {
+        padding: 32px; /* Adiciona padding de 32px para seções */
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #menu-btn {
+        display: inline-block; /* Exibe o botão de menu como inline-block */
+    }
+
+    .header .navbar {
+        position: absolute; /* Posiciona a navbar de forma absoluta */
+        top: 100%; 
+        right: -100%; /* Posiciona a navbar fora da tela */
+        background: #fff;
+        width: 480px; /* Largura da navbar para telas menores */
+        height: calc(100vh - 152px); /* Define a altura da navbar considerando o header */
+    }
+
+    .header .navbar.active {
+        right: 0; /* Muda a posição da navbar quando estiver ativa */
+    }
+
+    .header .navbar a {
+        color: var(--black); /* Define a cor dos links da navbar */
+        display: block;
+        margin: 24px; /* Define o espaçamento entre os links */
+        padding: 8px; /* Padding interno para links */
+        font-size: 32px; /* Tamanho da fonte dos links */
+    }
+
+    .header .search-form {
+        width: 90%; /* Ajusta a largura do campo de pesquisa */
+        right: 32px; /* Define o espaçamento lateral direito */
+    }
+
+    .home {
+        background-position: left; /* Alinha a imagem de fundo à esquerda */
+        justify-content: center; /* Centraliza o conteúdo */
+        text-align: center; /* Alinha o texto ao centro */
+    }
+
+    .home .content h3 {
+        font-size: 72px; /* Tamanho do título principal */
+    }
+
+    .home .content p {
+        font-size: 24px; /* Tamanho do texto na seção home */
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    html {
+        font-size: 50%; /* Define o tamanho da fonte como 50% da base do tamanho original */
+    }
+
+    .header {
+        padding: 16px 24px; /* Ajusta o padding da header (superior e inferior 16px, laterais 24px) */
+    }
+
+    section {
+        padding: 16px; /* Ajusta o padding das seções */
+    }
+
+    .header .navbar {
+        width: 300px; /* Largura da navbar para telas muito pequenas */
+    }
+
+    .header .navbar a {
+        font-size: 24px; /* Tamanho da fonte para links da navbar em telas menores */
+    }
+
+    .home .content h3 {
+        font-size: 56px; /* Tamanho do título principal em telas menores */
+    }
+
+    .home .content p {
+        font-size: 18px; /* Tamanho do texto na seção home em telas menores */
+    }
+}
